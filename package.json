@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "nx run-many --target=dev --all"
+    "dev": "nx run-many --target=dev --all",
+    "docker:up": "docker-compose -f apps/docker-compose.yml up -d",
+    "docker:down": "docker-compose -f apps/docker-compose.yml down"
   },
   "private": true,
   "devDependencies": {
