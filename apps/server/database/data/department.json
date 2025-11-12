@@ -1,6 +1,6 @@
 [
     {
-        "department": "Engineering & Development",
+        "name": "Engineering & Development",
         "description": "Designs, develops, tests, and maintains the core software, services, and infrastructure.",
         "positions": [
             {
@@ -42,7 +42,7 @@
         ]
     },
     {
-        "department": "Product Management",
+        "name": "Product Management",
         "description": "Sets the strategy, roadmap, and requirements for a product or product line.",
         "positions": [
             {
@@ -68,7 +68,7 @@
         ]
     },
     {
-        "department": "Design & UX",
+        "name": "Design & UX",
         "description": "Focuses on the user experience and visual interface of the product.",
         "positions": [
             {
@@ -98,7 +98,7 @@
         ]
     },
     {
-        "department": "Data Science & Analytics",
+        "name": "Data Science & Analytics",
         "description": "Analyzes large datasets to drive business decisions, improve products, and build predictive models.",
         "positions": [
             {
@@ -124,7 +124,7 @@
         ]
     },
     {
-        "department": "Sales & Business Development",
+        "name": "Sales & Business Development",
         "description": "Manages client relationships, drives revenue growth, and forms strategic partnerships.",
         "positions": [
             {
@@ -150,7 +150,7 @@
         ]
     },
     {
-        "department": "Marketing & Communications",
+        "name": "Marketing & Communications",
         "description": "Handles branding, content creation, campaigns, and public relations.",
         "positions": [
             {
@@ -180,7 +180,7 @@
         ]
     },
     {
-        "department": "Customer Success & Support",
+        "name": "Customer Success & Support",
         "description": "Ensures customer satisfaction, provides technical support, and manages customer retention.",
         "positions": [
             {
@@ -202,7 +202,7 @@
         ]
     },
     {
-        "department": "Human Resources & Operations",
+        "name": "Human Resources & Operations",
         "description": "Manages talent acquisition, employee relations, office administration, and facilities.",
         "positions": [
             {
@@ -211,7 +211,7 @@
             },
             {
                 "title": "HR Business Partner (HRBP)",
-                "description": "Works directly with department leaders to manage employee relations, performance management, and organizational development."
+                "description": "Works directly with name leaders to manage employee relations, performance management, and organizational development."
             },
             {
                 "title": "Compensation & Benefits Analyst",
@@ -228,7 +228,7 @@
         ]
     },
     {
-        "department": "Finance & Legal",
+        "name": "Finance & Legal",
         "description": "Manages company finances, accounting, compliance, and legal matters.",
         "positions": [
             {

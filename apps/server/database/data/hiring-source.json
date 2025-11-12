@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Company Career Page",
+        "description": "Candidates who applied directly through the company's dedicated careers website. Typically the highest quality and lowest cost source.",
+        "site_url": "[YourCompanyDomain]/careers"
+    },
+    {
+        "name": "Internal Referral",
+        "description": "Candidates referred by a current employee. Often results in the fastest hires and best culture fit.",
+        "site_url": "Internal System/Word-of-Mouth"
+    },
+    {
+        "name": "LinkedIn",
+        "description": "The professional networking site used for job postings, passive candidate sourcing, and recruiter outreach.",
+        "site_url": "https://www.linkedin.com"
+    },
+    {
+        "name": "Indeed",
+        "description": "A global job aggregator and job board, frequently one of the largest sources of high-volume applications.",
+        "site_url": "https://www.indeed.com"
+    },
+    {
+        "name": "Glassdoor",
+        "description": "Used by candidates to research company reviews and compensation; often features job postings.",
+        "site_url": "https://www.glassdoor.com"
+    },
+    {
+        "name": "Recruitment Agency / Headhunter",
+        "description": "Third-party firms specializing in sourcing highly specific or executive talent, usually used for hard-to-fill roles.",
+        "site_url": "N/A (Vendor-Specific)"
+    },
+    {
+        "name": "University/Campus Career Fair",
+        "description": "Candidates sourced from specific college or university events, commonly used for entry-level and internship roles.",
+        "site_url": "N/A (Event-Specific)"
+    },
+    {
+        "name": "HackerNews / Tech Forums",
+        "description": "Specialized job boards or community forums targeting niche technical audiences (e.g., specific programming languages or open source communities).",
+        "site_url": "https://news.ycombinator.com/jobs"
+    },
+    {
+        "name": "Google Jobs",
+        "description": "Candidates discovered through Google's job search feature, which aggregates listings from various sites.",
+        "site_url": "https://www.google.com/search?q=jobs"
+    }
+]
