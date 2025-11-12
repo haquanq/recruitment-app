@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create("rating_scale_point", function (Blueprint $table) {
             $table->id();
+            $table->integer("rank");
             $table->string("label", 100);
             $table->string("definition", 300);
             $table->timestamps();
