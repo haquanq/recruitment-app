@@ -9,7 +9,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create("position", function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger("id")->generatedAs()->always();
             $table->string("title", 100);
             $table->string("description", 300);
             $table->timestamps();
@@ -21,9 +21,13 @@ return new class extends Migration {
                     indexName: "fk_position__department",
                 );
 
-            $table->primary(["id"], "pk_position");
+
             $table->unique(["title"], "uq_position__title");
         });
+
+        DB::statement(
+            "ALTER TABLE public.position ADD CONSTRAINT pk_position PRIMARY KEY (id)",
+        );
     }
 
     public function down(): void

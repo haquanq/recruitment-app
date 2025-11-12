@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create("candidate_employment_history", function (
             Blueprint $table,
         ) {
-            $table->id("id");
+            $table->bigInteger("id")->generatedAs()->always();
             $table->date("from_date");
             $table->date("to_date");
             $table->string("employer_name", 100);
@@ -30,11 +30,12 @@ return new class extends Migration {
                     indexName: "fk_candidate_employment_history__candidate",
                 );
 
-            $table->primary(
-                columns: ["id"],
-                name: "pk_candidate_employment_history",
-            );
+
         });
+
+        DB::statement(
+            "ALTER TABLE public.candidate_employment_history ADD CONSTRAINT pk_candidate_employment_history PRIMARY KEY (id)",
+        );
     }
 
     /**

@@ -8,7 +8,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create("interview_evaluation", function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger("id")->generatedAs()->always();
             $table->string("comment", 300);
             $table
                 ->foreignId("interview_id")
@@ -24,12 +24,15 @@ return new class extends Migration {
                 ->foreignId("rating_scale_point_id")
                 ->constrained("rating_scale_point");
 
-            $table->primary(columns: ["id"], name: "pk_interview_evaluation");
             $table->unique(
                 columns: ["interview_id", "user_id"],
                 name: "uq_interview_evaluation__per_interview_by_user",
             );
         });
+
+        DB::statement(
+            "ALTER TABLE public.interview_evaluation ADD CONSTRAINT pk_interview_evaluation PRIMARY KEY (id)",
+        );
     }
 
     /**

@@ -4,13 +4,14 @@ use App\Enums\UserRole;
 use App\Enums\UserStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
     public function up(): void
     {
         Schema::create("user", function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger("id")->generatedAs()->always();
             $table->string("first_name");
             $table->string("last_name");
             $table->string("email");
@@ -30,10 +31,13 @@ return new class extends Migration {
                     indexName: "fk_user__position",
                 );
 
-            $table->primary(columns: ["id"], name: "uq_user");
             $table->unique(columns: ["email"], name: "uq_user__email");
             $table->unique(columns: ["username"], name: "uq_user__username");
         });
+
+        DB::statement(
+            "ALTER TABLE public.user ADD CONSTRAINT pk_user PRIMARY KEY (id)",
+        );
     }
 
     public function down(): void

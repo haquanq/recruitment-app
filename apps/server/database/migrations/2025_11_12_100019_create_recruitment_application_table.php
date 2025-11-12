@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create("recruitment_application", function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger("id")->generatedAs()->always();
             $table->timestampTZ("completed_at")->nullable();
             $table->timestamps();
 
@@ -35,15 +35,16 @@ return new class extends Migration {
                     indexName: "fk_recruitment_application__candidate",
                 );
 
-            $table->primary(
-                columns: ["id"],
-                name: "pk_recruitment_application",
-            );
+
             $table->unique(
                 columns: ["recruitment_id", "candidate_id"],
                 name: "uq_recruitment_application__per_recruitment",
             );
         });
+
+        DB::statement(
+            "ALTER TABLE public.recruitment_application ADD CONSTRAINT pk_recruitment_application PRIMARY KEY (id)",
+        );
     }
 
     public function down(): void

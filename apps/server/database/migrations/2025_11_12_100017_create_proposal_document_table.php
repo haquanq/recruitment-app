@@ -8,7 +8,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create("proposal_document", function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger("id")->generatedAs()->always();
             $table->string("file_id", 300);
             $table->string("file_name", 100);
             $table->text("file_url")->nullable();
@@ -24,12 +24,16 @@ return new class extends Migration {
                 )
                 ->onDelete("cascade");
 
-            $table->primary(columns: ["id"], name: "pk_proposal_document");
+
             $table->unique(
                 columns: ["file_id", "proposal_id"],
                 name: "uq_proposal_document__file_id_proposal_id",
             );
         });
+
+        DB::statement(
+            "ALTER TABLE public.proposal_document ADD CONSTRAINT pk_proposal_document PRIMARY KEY (id)",
+        );
     }
 
     public function down(): void

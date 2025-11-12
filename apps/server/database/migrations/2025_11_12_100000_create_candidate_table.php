@@ -9,7 +9,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create("candidate", function (Blueprint $table) {
-            $table->id("id");
+            $table->bigInteger("id")->generatedAs()->always();
             $table->string("first_name", 100);
             $table->string("last_name", 100);
             $table->date("date_of_birth");
@@ -28,10 +28,13 @@ return new class extends Migration {
                     indexName: "fk_candidate__hiring_source",
                 );
 
-            $table->primary(columns: ["id"], name: "pk_candidate");
             $table->unique(columns: ["email"], name: "uq_candidate__email");
             $table->unique(columns: ["phone"], name: "uq_candidate__phone");
         });
+
+        DB::statement(
+            "ALTER TABLE public.candidate ADD CONSTRAINT pk_candidate PRIMARY KEY (id)",
+        );
     }
 
     public function down(): void

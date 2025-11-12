@@ -12,7 +12,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create("recruitment", function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger("id")->generatedAs()->always();
             $table->string("title", 200);
             $table->string("description", 500);
             $table->string("position_title", 100);
@@ -37,8 +37,12 @@ return new class extends Migration {
                     indexName: "fk_recruitment__proposal",
                 );
 
-            $table->primary(columns: ["id"], name: "pk_recruitment");
+
         });
+
+        DB::statement(
+            "ALTER TABLE public.recruitment ADD CONSTRAINT pk_recruitment PRIMARY KEY (id)",
+        );
     }
 
     public function down(): void

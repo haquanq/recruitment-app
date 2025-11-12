@@ -10,8 +10,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create("proposal", function (Blueprint $table) {
-            $table->id();
-            $table->string("title", 200)->unique();
+            $table->bigInteger("id")->generatedAs()->always();
+            $table->string("title", 200);
             $table->string("description", 500);
             $table->integer("hire_goal");
             $table->integer("hired_count")->nullable();
@@ -23,7 +23,9 @@ return new class extends Migration {
                 ->enum("status", ProposalStatus::cases())
                 ->default(ProposalStatus::DRAFT);
 
-            $table->foreignId("user_id")->constrained("user");
+            $table
+                ->foreignId("user_id")
+                ->constrained(table: "user", indexName: "fk_proposal__user");
             $table
                 ->foreignId("contract_type_id")
                 ->constrained(
@@ -49,8 +51,12 @@ return new class extends Migration {
                     indexName: "fk_proposal__position",
                 );
 
-            $table->primary(columns: ["id"], name: "pk_proposal");
+            $table->unique(columns: ["title"], name: "uq_proposal__title");
         });
+
+        DB::statement(
+            "ALTER TABLE public.proposal ADD CONSTRAINT pk_proposal PRIMARY KEY (id)",
+        );
     }
 
     public function down(): void

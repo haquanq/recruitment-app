@@ -9,7 +9,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create("interview", function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger("id")->generatedAs()->always();
             $table->string("title");
             $table->text("description");
             $table->timestampTZ("scheduled_start_at");
@@ -38,9 +38,11 @@ return new class extends Migration {
             $table
                 ->foreignId("user_id")
                 ->constrained(table: "user", indexName: "fk_interview__user");
-
-            $table->primary(columns: ["id"], name: "pk_interview");
         });
+
+        DB::statement(
+            "ALTER TABLE public.interview ADD CONSTRAINT pk_interview PRIMARY KEY (id)",
+        );
     }
 
     public function down(): void

@@ -11,14 +11,18 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create("contract_type", function (Blueprint $table) {
-            $table->id("id");
+            $table->bigInteger("id")->generatedAs()->always();
             $table->string("name");
             $table->text("description");
             $table->timestamps();
 
-            $table->primary(columns: ["id"], name: "pk_contract_type");
+
             $table->unique(columns: ["name"], name: "uq_contract_type__name");
         });
+
+        DB::statement(
+            "ALTER TABLE public.contract_type ADD CONSTRAINT pk_contract_type PRIMARY KEY (id)",
+        );
     }
 
     /**

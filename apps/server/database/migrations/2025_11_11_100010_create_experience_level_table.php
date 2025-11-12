@@ -8,17 +8,21 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create("experience_level", function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger("id")->generatedAs()->always();
             $table->string("name");
             $table->text("description");
             $table->timestamps();
 
-            $table->primary(columns: ["id"], name: "pk_experience_level");
+
             $table->unique(
                 columns: ["name"],
                 name: "uq_experience_level__name",
             );
         });
+
+        DB::statement(
+            "ALTER TABLE public.experience_level ADD CONSTRAINT pk_experience_level PRIMARY KEY (id)",
+        );
     }
 
     public function down(): void

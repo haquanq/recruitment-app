@@ -8,14 +8,18 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create("department", function (Blueprint $table) {
-            $table->id("id");
+            $table->bigInteger("id")->generatedAs()->always();
             $table->string("name", 100);
             $table->string("description", 300);
             $table->timestamps();
 
-            $table->primary(columns: ["id"], name: "pk_department");
+
             $table->unique(columns: ["name"], name: "uq_department__name");
         });
+
+        DB::statement(
+            "ALTER TABLE public.department ADD CONSTRAINT pk_department PRIMARY KEY (id)",
+        );
     }
 
     public function down(): void

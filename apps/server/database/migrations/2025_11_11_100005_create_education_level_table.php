@@ -8,14 +8,17 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create("education_level", function (Blueprint $table) {
-            $table->id("id");
-            $table->string("name")->unique("uq_education_level_name");
+            $table->bigInteger("id")->generatedAs()->always();
+            $table->string("name");
             $table->text("description");
             $table->timestamps();
 
-            $table->primary(columns: ["id"], name: "pk_education_level");
             $table->unique(columns: ["name"], name: "uq_education_level__name");
         });
+
+        DB::statement(
+            "ALTER TABLE public.education_level ADD CONSTRAINT pk_education_level PRIMARY KEY (id)",
+        );
     }
 
     public function down(): void

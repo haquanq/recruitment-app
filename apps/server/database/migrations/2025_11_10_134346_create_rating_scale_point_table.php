@@ -8,7 +8,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create("rating_scale_point", function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger("id")->generatedAs()->always();
             $table->integer("rank");
             $table->string("label", 100);
             $table->string("definition", 300);
@@ -21,12 +21,15 @@ return new class extends Migration {
                     indexName: "fk_rating_scale_point__rating_scale",
                 );
 
-            $table->primary(columns: ["id"], name: "pk_rating_scale_point");
             $table->unique(
                 columns: ["rating_scale_id", "label"],
                 name: "uq_rating_scale_point__label_per_scale",
             );
         });
+
+        DB::statement(
+            "ALTER TABLE public.rating_scale_point ADD CONSTRAINT pk_rating_scale_point PRIMARY KEY (id)",
+        );
     }
 
     public function down(): void
