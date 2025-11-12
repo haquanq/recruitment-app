@@ -24,12 +24,11 @@ return new class extends Migration {
                 ->default(UserStatus::ACTIVE);
 
             $table
-                ->foreignId("department_id")
+                ->foreignId("position_id")
                 ->constrained(
-                    table: "department",
-                    indexName: "fk_user__department",
-                )
-                ->onDelete("cascade");
+                    table: "position",
+                    indexName: "fk_user__position",
+                );
 
             $table->primary(columns: ["id"], name: "uq_user");
             $table->unique(columns: ["email"], name: "uq_user__email");
