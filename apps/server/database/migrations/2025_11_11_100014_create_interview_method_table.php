@@ -7,23 +7,25 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create("interview_type", function (Blueprint $table) {
+        Schema::create("interview_method", function (Blueprint $table) {
             $table->bigInteger("id")->generatedAs()->always();
             $table->string("name", 100);
             $table->string("description", 300);
             $table->timestamps();
 
-
-            $table->unique(columns: ["name"], name: "uq_interview_type__name");
+            $table->unique(
+                columns: ["name"],
+                name: "uq_interview_method__name",
+            );
         });
 
         DB::statement(
-            "ALTER TABLE public.interview_type ADD CONSTRAINT pk_interview_type PRIMARY KEY (id)",
+            "ALTER TABLE public.interview_method ADD CONSTRAINT pk_interview_method PRIMARY KEY (id)",
         );
     }
 
     public function down(): void
     {
-        Schema::dropIfExists("interview_type");
+        Schema::dropIfExists("interview_method");
     }
 };

@@ -11,11 +11,11 @@ class InterviewTypeSeeder extends Seeder
     public function run(): void
     {
         $items = json_decode(
-            File::get(database_path("/data/interview-type.json")),
+            File::get(database_path("/data/interview-method.json")),
             true,
         );
 
         SeederHelper::addTimeStamps($items);
-        DB::table("interview_type")->insert($items);
+        DB::table("interview_method")->insert($items);
     }
 }

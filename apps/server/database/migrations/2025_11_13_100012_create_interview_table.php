@@ -30,10 +30,10 @@ return new class extends Migration {
                     indexName: "fk_interview__recruitment_application",
                 );
             $table
-                ->foreignId("interview_type_id")
+                ->foreignId("interview_method_id")
                 ->constrained(
-                    table: "interview_type",
-                    indexName: "fk_interview__interview_type",
+                    table: "interview_method",
+                    indexName: "fk_interview__interview_method",
                 );
             $table
                 ->foreignId("user_id")
