@@ -18,10 +18,17 @@
                 "cwd": "apps/server"
             }
         },
-        "migrate": {
+        "db:migrate": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "php artisan migrate",
+                "command": "php artisan migrate:fresh",
+                "cwd": "apps/server"
+            }
+        },
+        "db:migrate-seed": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "php artisan migrate:fresh --seed",
                 "cwd": "apps/server"
             }
         }
