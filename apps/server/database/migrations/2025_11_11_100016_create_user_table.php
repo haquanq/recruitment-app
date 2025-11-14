@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string("first_name", 100);
             $table->string("last_name", 100);
             $table->string("email", 300);
-            $table->string("phone", 15);
+            $table->string("phone_number", 15);
             $table->string("username", 40);
             $table->string("password", 30);
             $table->timestampTz("suspended_at")->nullable();
@@ -37,7 +37,10 @@ return new class extends Migration {
                 );
 
             $table->unique(columns: ["email"], name: "uq_user__email");
-            $table->unique(columns: ["phone"], name: "uq_user__phone");
+            $table->unique(
+                columns: ["phone_number"],
+                name: "uq_user__phone_number",
+            );
             $table->unique(columns: ["username"], name: "uq_user__username");
         });
 

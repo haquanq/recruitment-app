@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->date("date_of_birth");
             $table->string("address", 256);
             $table->string("email", 256);
-            $table->string("phone", 15);
+            $table->string("phone_number", 15);
             $table
                 ->enum("status", CandidateStatus::cases())
                 ->default(CandidateStatus::NEW);
@@ -29,7 +29,10 @@ return new class extends Migration {
                 );
 
             $table->unique(columns: ["email"], name: "uq_candidate__email");
-            $table->unique(columns: ["phone"], name: "uq_candidate__phone");
+            $table->unique(
+                columns: ["phone_number"],
+                name: "uq_candidate__phone_number",
+            );
         });
 
         DB::statement(
